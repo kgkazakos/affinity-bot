@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "affinity-bot"
+version = "0.1.0"
+description = "LLM-powered affinity diagramming and theme clustering from raw research notes. CPR Orbital Tool #36."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Kostas Kazakos", email = "kostas@example.com" }]
+keywords = [
+    "uxr",
+    "research",
+    "affinity-diagramming",
+    "thematic-analysis",
+    "clustering",
+    "cpr",
+    "computational-product-research",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+# LLM enrichment is ON BY DEFAULT — dspy / litellm ship as core dependencies,
+# not as optional [llm] extras. The tool still works offline if no API key is
+# present; the LLM layer falls back gracefully.
+dependencies = [
+    "click>=8.1",
+    "rich>=13.0",
+    "numpy>=1.24",
+    "scikit-learn>=1.3",
+    "dspy-ai>=2.4",
+    "litellm>=1.40",
+]
+
+[project.optional-dependencies]
+ui = ["streamlit>=1.30"]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.4"]
+
+[project.urls]
+Homepage = "https://github.com/kgkazakos/affinity-bot"
+Repository = "https://github.com/kgkazakos/affinity-bot"
+Issues = "https://github.com/kgkazakos/affinity-bot/issues"
+
+[project.scripts]
+affinity-bot = "affinity_bot.cli:main"
+
+[tool.setuptools]
+packages = ["affinity_bot"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+addopts = ["-q", "--strict-markers"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B", "UP"]
+ignore = [
+    "E501",   # line length handled by formatter / tolerated
+    "B008",   # function call in default argument — Click pattern
+    "UP045",  # Optional[X] is allowed; we use it consistently across the codebase
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E402", "F401"]
