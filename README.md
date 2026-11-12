@@ -126,7 +126,7 @@ Orbital tools.
 | Backend   | Model string                    |
 |-----------|---------------------------------|
 | Anthropic | `anthropic/claude-opus-4-7`     |
-| Gemini    | `gemini/gemini-3.1-pro-preview` |
+| Gemini    | `gemini/gemini-4-argon` |
 | OpenAI    | `openai/gpt-5.5`                |
 
 Model strings live in `affinity_bot/llm.py` (`BACKENDS`) — edit them if

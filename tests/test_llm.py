@@ -22,7 +22,7 @@ from affinity_bot.models import AffinityConfig, Cluster, Note
 
 def test_backend_model_strings_are_correct():
     assert BACKENDS["anthropic"] == "anthropic/claude-opus-4-7"
-    assert BACKENDS["gemini"] == "gemini/gemini-3.1-pro-preview"
+    assert BACKENDS["gemini"] == "gemini/gemini-4-argon"
     assert BACKENDS["openai"] == "openai/gpt-5.5"
 
 
