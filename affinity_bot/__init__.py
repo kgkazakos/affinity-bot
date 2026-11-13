@@ -9,7 +9,7 @@ Design contract
   labelling) runs fully offline with zero API calls and produces a useful
   first-pass affinity diagram on its own.
 * The LLM enrichment layer (``llm.py``) is **on by default** across three
-  backends — Anthropic Claude Opus, Google Gemini 3.1 Pro, OpenAI GPT-5.5 —
+  backends — Anthropic Claude Opus, Google Gemini 4 Argon, OpenAI GPT-5.5 —
   via DSPy/LiteLLM. It generates human-readable theme labels and short
   rationale strings. With no API key (or ``--no-llm``), the rule-based
   result is returned unchanged.
